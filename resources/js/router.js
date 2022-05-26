@@ -10,6 +10,9 @@ import AddCar from "./components/admin/AddCar";
 import Test from "./components/admin/Test";
 import NotFound from "./pages/notFound.vue";
 import Details from "./components/pricesec/Details";
+import RentNow from "./components/pricesec/RentNow";
+import Invoices from "./components/pricesec/Invoices";
+import AdminPanel from "./components/admin/AdminPanel";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -24,7 +27,9 @@ const router = createRouter({
         { path: "/addcar", component: AddCar, name: "Addcar" },
         { path: "/test", component: Test },
         { path: "/details/:id", component: Details, name: "details" },
-
+        { path: "/rentnow/:id", component: RentNow, name: "rentnow" },
+        { path: "/invoices", component: Invoices },
+        { path: "/adminp", component: AdminPanel },
         {
             path: "/:notFound(.*)",
             component: NotFound,

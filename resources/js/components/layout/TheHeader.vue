@@ -34,6 +34,11 @@
                         </router-link>
                     </li>
                     <li v-if="loggedIn">
+                        <router-link to="/adminp" class="nav-link">
+                            Admin Panel
+                        </router-link>
+                    </li>
+                    <li v-if="loggedIn">
                         <router-link to="/" @click="logOut" class="nav-link">
                             Logout
                         </router-link>

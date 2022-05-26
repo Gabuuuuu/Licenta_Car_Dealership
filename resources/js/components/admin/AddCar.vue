@@ -1,5 +1,6 @@
 <template>
     <section>
+        <TheHeader class="fixed-top"></TheHeader>
         <div class="bg-image">
             <div class="container py-5 h-100">
                 <div
@@ -219,11 +220,15 @@
                 </div>
             </div>
         </div>
+        <TheFooter></TheFooter>
     </section>
 </template>
 
 <script>
+import TheFooter from "../../components/layout/TheFooter.vue";
+import TheHeader from "../../components/layout/TheHeader";
 export default {
+    components: { TheHeader, TheFooter },
     data() {
         return {
             brands: [],

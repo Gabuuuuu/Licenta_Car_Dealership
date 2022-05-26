@@ -69,12 +69,19 @@
                                         <h4>Price/Day: {{ car.price }}</h4>
                                     </div>
                                     <br />
-                                    <button
-                                        class="btn btn-outline-light btn-lg px-5 mb-1"
-                                        type="submit"
+                                    <router-link
+                                        :to="{
+                                            name: 'rentnow',
+                                            params: { id: car.id },
+                                        }"
                                     >
-                                        Rent now
-                                    </button>
+                                        <button
+                                            class="btn btn-outline-light btn-lg px-5 mb-1"
+                                            type="submit"
+                                        >
+                                            Rent now
+                                        </button>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>

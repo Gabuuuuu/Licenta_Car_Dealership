@@ -15,6 +15,9 @@ Route::post('/login', [AuthController::class, 'login']);
     //ROUTE FOR ADDING A NEW CAR
 Route::resource('/cars', App\Http\Controllers\CarController::class);
 
+    //ROUTE FOR ADDING INVOICES
+Route::resource('/invoices', App\Http\Controllers\InvoiceController::class);
+
 
     //ROUTES FOR ADDING CAR DETAILS
 Route::get('/brands', [CarController::class, 'getBrands']);
