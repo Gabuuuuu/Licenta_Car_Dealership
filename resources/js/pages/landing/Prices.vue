@@ -1,7 +1,7 @@
 <template>
     <TheHeader class="fixed-top"></TheHeader>
     <Cars></Cars>
-    <TheFooter class="fixed-bottom"></TheFooter>
+    <TheFooter></TheFooter>
 </template>
 
 <script>
@@ -17,5 +17,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

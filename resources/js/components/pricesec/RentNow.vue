@@ -232,7 +232,7 @@ export default {
 
             axios
                 .post("/api/invoices", payload)
-                .then(this.$router.push({ path: "/home" }))
+                // .then(this.$router.push({ path: "/home" }))
                 .catch((error) => console.log(error.response.data));
         },
         total(price, days) {
