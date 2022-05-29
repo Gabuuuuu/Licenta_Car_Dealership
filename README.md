@@ -7,12 +7,14 @@ Login/Sign Up Pages;
 Transactions Page;
 Renting Page;
 Admin Panel;
+
 II. The main functionalities of the project:
 
 The ability to add cars in the database by using the administrator panel, if the user is logged in with the right permissions.
 The ability to manage and modify the data on the website at your own will as an admin in the Admin Panel;
 The ability for the users to rent the actual car, that is displayed from the database, and a multiple choice varint for the number of days that the user wants to rent the car for, and the automatic calculation of the price based on the days chosen.
 A fully working display system for the Invoices that are generated after renting a car in the previous section.
+
 III. The main implemented concepts of the project:
 
 A fully working sign up and login cycle. 
@@ -25,6 +27,7 @@ Routing security in front-end, you cannot enter the Transactions Page unless you
 Routing security in back-end, you cannot request certain data unless you have a certain role (example: Admin for Admin Panel) on certain pages. Data is protected by Permissions and MiddleWares;
 The ability to see and access an Admin Panel only as an Admin. 
 Use of reusable components for base elements (example: Base Dialogue, Base Button, Base Badge, etc) and many more...
+
 IV. Software requirements:
 
 Node.js installed (17.5.0 is the used production version for the project);
