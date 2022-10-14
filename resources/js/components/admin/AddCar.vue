@@ -1,227 +1,229 @@
 <template>
-    <section>
-        <TheHeader class="fixed-top"></TheHeader>
-        <div class="bg-image">
-            <div class="container py-5 h-100">
-                <div
-                    class="row d-flex justify-content-center align-items-center h-100"
-                >
-                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div
-                            class="card bg-dark text-white"
-                            style="border-radius: 1rem"
-                        >
-                            <div class="card-body p-5 text-center">
-                                <div class="mb-md-6 mt-md-4 pb-5">
-                                    <h2 class="fw-bold mb-4">Add a car</h2>
+    <div>
+        <section>
+            <TheHeader class="fixed-top"></TheHeader>
+            <div class="bg-image">
+                <div class="container py-5 h-100">
+                    <div
+                        class="row d-flex justify-content-center align-items-center h-100"
+                    >
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div
+                                class="card bg-dark text-white"
+                                style="border-radius: 1rem"
+                            >
+                                <div class="card-body p-5 text-center">
+                                    <div class="mb-md-6 mt-md-4 pb-5">
+                                        <h2 class="fw-bold mb-4">Add a car</h2>
 
-                                    <p class="text-white-50 mb-4">
-                                        Fill all the available spaces
-                                    </p>
-                                    <form
-                                        @submit.prevent="addcar"
-                                        method="POST"
-                                        enctype="multipart/form-data"
-                                    >
-                                        <div
-                                            class="form-outline form-white mb-4"
+                                        <p class="text-white-50 mb-4">
+                                            Fill all the available spaces
+                                        </p>
+                                        <form
+                                            @submit.prevent="addcar"
+                                            method="POST"
+                                            enctype="multipart/form-data"
                                         >
-                                            <select
-                                                v-model="form.brand"
-                                                class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
-                                                data-style="btn-success"
+                                            <div
+                                                class="form-outline form-white mb-4"
                                             >
-                                                <option disabled hidden>
-                                                    Brand
-                                                </option>
-                                                <option
-                                                    v-for="brand in brands"
-                                                    :key="brand.id"
+                                                <select
+                                                    v-model="form.brand"
+                                                    class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
+                                                    data-style="btn-success"
                                                 >
-                                                    {{ brand.brand }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                                    <option disabled hidden>
+                                                        Brand
+                                                    </option>
+                                                    <option
+                                                        v-for="brand in brands"
+                                                        :key="brand.id"
+                                                    >
+                                                        {{ brand.brand }}
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <select
-                                                v-model="form.fuel"
-                                                class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
-                                                data-style="btn-success"
+                                            <div
+                                                class="form-outline form-white mb-4"
                                             >
-                                                <option
-                                                    hidden
-                                                    disabled
-                                                    selected
+                                                <select
+                                                    v-model="form.fuel"
+                                                    class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
+                                                    data-style="btn-success"
                                                 >
-                                                    Fuel Type
-                                                </option>
-                                                <option
-                                                    v-for="fuel in fuels"
-                                                    :key="fuel.id"
-                                                >
-                                                    {{ fuel.fuel }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                                    <option
+                                                        hidden
+                                                        disabled
+                                                        selected
+                                                    >
+                                                        Fuel Type
+                                                    </option>
+                                                    <option
+                                                        v-for="fuel in fuels"
+                                                        :key="fuel.id"
+                                                    >
+                                                        {{ fuel.fuel }}
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <select
-                                                v-model="form.body"
-                                                class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
-                                                data-style="btn-success"
+                                            <div
+                                                class="form-outline form-white mb-4"
                                             >
-                                                <option
-                                                    hidden
-                                                    disabled
-                                                    selected
+                                                <select
+                                                    v-model="form.body"
+                                                    class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
+                                                    data-style="btn-success"
                                                 >
-                                                    Body Type
-                                                </option>
-                                                <option
-                                                    v-for="body in bodies"
-                                                    :key="body.id"
-                                                >
-                                                    {{ body.body }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                                    <option
+                                                        hidden
+                                                        disabled
+                                                        selected
+                                                    >
+                                                        Body Type
+                                                    </option>
+                                                    <option
+                                                        v-for="body in bodies"
+                                                        :key="body.id"
+                                                    >
+                                                        {{ body.body }}
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <select
-                                                v-model="form.seats"
-                                                class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
-                                                data-style="btn-success"
+                                            <div
+                                                class="form-outline form-white mb-4"
                                             >
-                                                <option
-                                                    hidden
-                                                    disabled
-                                                    selected
+                                                <select
+                                                    v-model="form.seats"
+                                                    class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
+                                                    data-style="btn-success"
                                                 >
-                                                    Seats
-                                                </option>
-                                                <option
-                                                    v-for="seat in seats"
-                                                    :key="seat.id"
-                                                >
-                                                    {{ seat.seats }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                                    <option
+                                                        hidden
+                                                        disabled
+                                                        selected
+                                                    >
+                                                        Seats
+                                                    </option>
+                                                    <option
+                                                        v-for="seat in seats"
+                                                        :key="seat.id"
+                                                    >
+                                                        {{ seat.seats }}
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <select
-                                                v-model="form.transmission"
-                                                class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
-                                                data-style="btn-success"
+                                            <div
+                                                class="form-outline form-white mb-4"
                                             >
-                                                <option
-                                                    hidden
-                                                    disabled
-                                                    selected
+                                                <select
+                                                    v-model="form.transmission"
+                                                    class="selectpicker btn btn-secondary btn-lg dropdown-toggle form-control form-control-lg"
+                                                    data-style="btn-success"
                                                 >
-                                                    Transmission
-                                                </option>
-                                                <option
-                                                    v-for="transmission in transmissions"
-                                                    :key="transmission.id"
-                                                >
-                                                    {{
-                                                        transmission.transmission
-                                                    }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                                    <option
+                                                        hidden
+                                                        disabled
+                                                        selected
+                                                    >
+                                                        Transmission
+                                                    </option>
+                                                    <option
+                                                        v-for="transmission in transmissions"
+                                                        :key="transmission.id"
+                                                    >
+                                                        {{
+                                                            transmission.transmission
+                                                        }}
+                                                    </option>
+                                                </select>
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <input
-                                                type="file"
-                                                class="form-control form-control-lg"
-                                                @change="changeImage"
-                                            />
-                                        </div>
+                                            <div
+                                                class="form-outline form-white mb-4"
+                                            >
+                                                <input
+                                                    type="file"
+                                                    class="form-control form-control-lg"
+                                                    @change="changeImage"
+                                                />
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <input
-                                                v-model="form.model"
-                                                placeholder="Model"
-                                                type="text"
-                                                class="form-control form-control-lg"
-                                            />
-                                        </div>
+                                            <div
+                                                class="form-outline form-white mb-4"
+                                            >
+                                                <input
+                                                    v-model="form.model"
+                                                    placeholder="Model Masina"
+                                                    type="text"
+                                                    class="form-control form-control-lg"
+                                                />
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <input
-                                                v-model="form.consumption"
-                                                placeholder="Consumption"
-                                                type="text"
-                                                class="form-control form-control-lg"
-                                            />
-                                        </div>
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <input
-                                                v-model="form.year"
-                                                placeholder="Year"
-                                                type="text"
-                                                class="form-control form-control-lg"
-                                            />
-                                        </div>
+                                            <div
+                                                class="form-outline form-white mb-4"
+                                            >
+                                                <input
+                                                    v-model="form.consumption"
+                                                    placeholder="Consumption"
+                                                    type="text"
+                                                    class="form-control form-control-lg"
+                                                />
+                                            </div>
+                                            <div
+                                                class="form-outline form-white mb-4"
+                                            >
+                                                <input
+                                                    v-model="form.year"
+                                                    placeholder="Year"
+                                                    type="text"
+                                                    class="form-control form-control-lg"
+                                                />
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <input
-                                                v-model="form.price"
-                                                placeholder="Price/Day"
-                                                type="text"
-                                                class="form-control form-control-lg"
-                                            />
-                                        </div>
+                                            <div
+                                                class="form-outline form-white mb-4"
+                                            >
+                                                <input
+                                                    v-model="form.price"
+                                                    placeholder="Price/Day"
+                                                    type="text"
+                                                    class="form-control form-control-lg"
+                                                />
+                                            </div>
 
-                                        <div
-                                            class="form-outline form-white mb-4"
-                                        >
-                                            <textarea
-                                                v-model="form.description"
-                                                placeholder="Description"
-                                                type="text"
-                                                class="form-control form-control-lg"
-                                                rows="5"
-                                            />
-                                        </div>
+                                            <div
+                                                class="form-outline form-white mb-4"
+                                            >
+                                                <textarea
+                                                    v-model="form.description"
+                                                    placeholder="Description"
+                                                    type="text"
+                                                    class="form-control form-control-lg"
+                                                    rows="5"
+                                                />
+                                            </div>
 
-                                        <button
-                                            class="btn btn-outline-light btn-lg px-5 mb-1"
-                                            type="submit"
-                                        >
-                                            Add the car
-                                        </button>
-                                    </form>
+                                            <button
+                                                class="btn btn-outline-light btn-lg px-5 mb-1"
+                                                type="submit"
+                                            >
+                                                Add the car
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <TheFooter></TheFooter>
-    </section>
+            <TheFooter></TheFooter>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -270,7 +272,10 @@ export default {
             data.append("file", this.form.file);
             data.append("description", this.form.description);
 
-            axios.post("/api/cars", data);
+            axios.post("/api/cars", data).then((res) => {
+                this.responseAfterLogin(res);
+                this.loadData();
+            });
         },
 
         loadData() {
@@ -297,6 +302,9 @@ export default {
                         this.transmissions = responses[4].data;
                     })
                 );
+        },
+        responseAfterLogin(res) {
+            this.$router.push({ path: "/home" });
         },
 
         changeImage(e) {

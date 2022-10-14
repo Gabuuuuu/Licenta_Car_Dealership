@@ -13,6 +13,9 @@ import Details from "./components/pricesec/Details";
 import RentNow from "./components/pricesec/RentNow";
 import Invoices from "./components/pricesec/Invoices";
 import AdminPanel from "./components/admin/AdminPanel";
+import RemoveCar from "./components/admin/RemoveCar";
+import AddAdmins from "./components/admin/AddAdmins";
+import InvoiceDetails from "./components/pricesec/InvoiceDetails";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,8 +31,26 @@ const router = createRouter({
         { path: "/test", component: Test },
         { path: "/details/:id", component: Details, name: "details" },
         { path: "/rentnow/:id", component: RentNow, name: "rentnow" },
-        { path: "/invoices", component: Invoices },
-        { path: "/adminp", component: AdminPanel },
+        {
+            path: "/invoices",
+            component: Invoices,
+            name: "invoices",
+            meta: { admin: true },
+        },
+        { path: "/adminp", component: AdminPanel, meta: { admin: true } },
+        { path: "/removecar", component: RemoveCar, meta: { admin: true } },
+        {
+            path: "/addadmins",
+            component: AddAdmins,
+            name: "addadmins",
+            meta: { admin: true },
+        },
+        {
+            path: "/invoicedetails/:id",
+            component: InvoiceDetails,
+            name: "invoicedetails",
+            meta: { admin: true },
+        },
         {
             path: "/:notFound(.*)",
             component: NotFound,
@@ -39,8 +60,13 @@ const router = createRouter({
 
 router.beforeEach((to, _) => {
     const loggedIn = !!localStorage.getItem("token");
+    const Role = localStorage.getItem("role");
 
     if (to.meta.guest && loggedIn) {
+        return {
+            path: "/home",
+        };
+    } else if (Role === "0" && loggedIn && to.meta.admin) {
         return {
             path: "/home",
         };

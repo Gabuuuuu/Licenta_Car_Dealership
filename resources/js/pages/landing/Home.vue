@@ -1,9 +1,11 @@
 <template>
-    <TheHeader class="fixed-top"></TheHeader>
-    <HeroSec></HeroSec>
-    <CardsSec></CardsSec>
-    <AboutSec></AboutSec>
-    <TheFooter></TheFooter>
+    <div>
+        <TheHeader class="fixed-top"></TheHeader>
+        <HeroSec></HeroSec>
+        <CardsSec></CardsSec>
+        <AboutSec></AboutSec>
+        <TheFooter></TheFooter>
+    </div>
 </template>
 
 <script>

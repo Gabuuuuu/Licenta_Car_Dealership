@@ -1,53 +1,51 @@
 <template>
-    <section id="about" class="about section-bg">
-        <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h3>Why Catch-A-<span>Ride?</span></h3>
-                <p>
-                    We have the bestdeals for all kinds of brands, from the
-                    daily car to the supersport, extra comfortable cars, to the
-                    most covenient , starting up to $10 per day!
-                </p>
-            </div>
-
-            <div class="row">
-                <div
-                    class="col-lg-6"
-                    data-aos="fade-right"
-                    data-aos-delay="100"
-                >
-                    <img
-                        src="../../../../public/photos/AboutPic.jpg"
-                        class="img-fluid"
-                    />
-                </div>
-                <div
-                    class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center"
-                    data-aos="fade-up"
-                    data-aos-delay="100"
-                >
-                    <h3>Find the perfect car for you !</h3>
-                    <p class="fst-italic">
-                        Enter your style and browse through thousands of cars
-                        shared by local hosts.
+    <div>
+        <section id="about" class="about section-bg">
+            <div class="container">
+                <div class="section-title">
+                    <h3>Why Catch-A-<span>Ride?</span></h3>
+                    <p>
+                        We have the bestdeals for all kinds of brands, from the
+                        daily car to the supersport, extra comfortable cars, to
+                        the most covenient , starting up to $10 per day!
                     </p>
-                    <ul>
-                        <li v-for="line in lines" :key="line.id">
-                            <i :class="line.icon"></i>
-                            <div>
-                                <h5>
-                                    {{ line.title }}
-                                </h5>
-                                <p>
-                                    {{ line.desc }}
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
+                </div>
+
+                <div class="row">
+                    <div
+                        class="col-lg-6"
+                    >
+                        <img
+                            src="../../../../public/photos/AboutPic.jpg"
+                            class="img-fluid"
+                        />
+                    </div>
+                    <div
+                        class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center"
+                    >
+                        <h3>Find the perfect car for you !</h3>
+                        <p class="fst-italic">
+                            Enter your style and browse through thousands of
+                            cars shared by local hosts.
+                        </p>
+                        <ul>
+                            <li v-for="line in lines" :key="line.id">
+                                <i :class="line.icon"></i>
+                                <div>
+                                    <h5>
+                                        {{ line.title }}
+                                    </h5>
+                                    <p>
+                                        {{ line.desc }}
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
 
 <script>

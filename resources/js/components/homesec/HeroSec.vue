@@ -1,10 +1,12 @@
 <template>
-    <section id="hero" class="d-flex align-items-center">
-        <div class="container" data-aos="zoom-out" data-aos-delay="100">
-            <h1>Catch-A-<span>Ride!</span></h1>
-            <h2>The world's largest car renting marketplace</h2>
-        </div>
-    </section>
+    <div>
+        <section id="hero" class="d-flex align-items-center">
+            <div class="container">
+                <h1>Catch-A-<span>Ride!</span></h1>
+                <h2>The world's largest car renting marketplace</h2>
+            </div>
+        </section>
+    </div>
 </template>
 
 <style scoped>

@@ -25,6 +25,10 @@ class InvoiceController extends Controller
             'price' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'cardname' => 'required|string|max:255',
+            'cardnumbers' => 'required|string|max:16',
+            'month' => 'required|string|max:5',
+            'ccv' => 'required|string|max:3',
+            'zip' => 'required|string|max:6',
             'days' => 'required|string|max:255',
             'total' => 'required|integer|max:255',
         ]);
@@ -36,6 +40,10 @@ class InvoiceController extends Controller
                 'priceday' => $request->price,
                 'email' => $request->email,
                 'cardname'=> $request->cardname,
+                'cardnumbers' => $request->cardnumbers,
+                'month' => $request->month,
+                'ccv' => $request->ccv,
+                'zip' => $request->zip,
                 'days' => $request->days,
                 'total' => $request->total,
 
@@ -46,9 +54,9 @@ class InvoiceController extends Controller
         return response()->json('Invoice successfully added');
     }
 
-        public function getInvoices() {
-        $invoice = DB::select('SELECT * FROM invoices');
 
+        public function loadInvoice ($id) {
+        $invoice = Invoice::findOrFail($id);
         return response()->json($invoice);
     }
 

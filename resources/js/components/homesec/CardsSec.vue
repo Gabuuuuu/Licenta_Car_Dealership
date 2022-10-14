@@ -1,27 +1,25 @@
 <template>
-    <section id="featured-services" class="featured-services">
-        <div class="container" data-aos="fade-up">
-            <div class="row">
-                <div
-                    class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
-                    v-for="card in cards"
-                    :key="card.id"
-                >
+    <div>
+        <section id="featured-services" class="featured-services">
+            <div class="container">
+                <div class="row">
                     <div
-                        class="icon-box"
-                        data-aos="fade-up"
-                        data-aos-delay="100"
+                        class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
+                        v-for="card in cards"
+                        :key="card.id"
                     >
-                        <div class="icon"><i :class="card.icon"></i></div>
-                        <h4 class="title">{{ card.title }}</h4>
-                        <p class="description">
-                            {{ card.desc }}
-                        </p>
+                        <div class="icon-box">
+                            <div class="icon"><i :class="card.icon"></i></div>
+                            <h4 class="title">{{ card.title }}</h4>
+                            <p class="description">
+                                {{ card.desc }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </template>
 
 <script>

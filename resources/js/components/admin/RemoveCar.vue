@@ -1,5 +1,6 @@
 <template>
     <div>
+        <the-header></the-header>
         <section class="wrapper">
             <div class="container-fostrap">
                 <div class="content">
@@ -8,7 +9,7 @@
                             <div
                                 class="col-xs-12 col-sm-4"
                                 v-for="car in cars"
-                                :key="car.index"
+                                :key="car.id"
                             >
                                 <div class="card">
                                     <div class="img-card">
@@ -26,18 +27,12 @@
                                         </p>
                                     </div>
                                     <div class="card-read-more">
-                                        <a class="btn btn-block"
-                                            >Price: ${{ car.price }}</a
+                                        <button
+                                            class="btn btn-outline btn-lg px-5 mb-1"
+                                            @click="deleteCar(car.id)"
                                         >
-                                        <router-link
-                                            :to="{
-                                                name: 'details',
-                                                params: { id: car.id },
-                                            }"
-                                            class="btn btn-link btn-block"
-                                        >
-                                            Extra Details
-                                        </router-link>
+                                            Remove the Car
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -46,11 +41,15 @@
                 </div>
             </div>
         </section>
+        <TheFooter></TheFooter>
     </div>
 </template>
 
 <script>
+import TheFooter from "../../components/layout/TheFooter.vue";
+import TheHeader from "../../components/layout/TheHeader";
 export default {
+    components: { TheHeader, TheFooter },
     data() {
         return {
             cars: [],
@@ -63,6 +62,11 @@ export default {
         async loadData() {
             const response = await axios.get("api/cars");
             this.cars = response.data;
+        },
+        deleteCar(id) {
+            axios.delete("/api/cars/" + id).then(() => {
+                this.loadData();
+            });
         },
     },
 };

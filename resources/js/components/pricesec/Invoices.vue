@@ -1,91 +1,114 @@
 <template>
-    <section>
-        <TheHeader></TheHeader>
-        <tr>
-            <td>
-                <input
-                    type="text"
-                    v-model="filterBrand"
-                    placeholder="Filter By Brand"
-                />
-            </td>
-            <td>
-                <input
-                    type="text"
-                    v-model="filterModel"
-                    placeholder="Filter By Model"
-                />
-            </td>
+    <div>
+        <section>
+            <TheHeader></TheHeader>
+            <div class="">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <input
+                                class="form-control input-lg"
+                                type="text"
+                                v-model="filterBrand"
+                                placeholder="Filter By Brand"
+                            />
+                        </div>
+                        <div class="col">
+                            <input
+                                class="form-control input-lg"
+                                type="text"
+                                v-model="filterModel"
+                                placeholder="Filter By Model"
+                            />
+                        </div>
+                        <div class="col">
+                            <input
+                                class="form-control input-lg"
+                                type="text"
+                                v-model="filterPrice"
+                                placeholder="Filter By Price/Day"
+                            />
+                        </div>
+                        <div class="col">
+                            <input
+                                class="form-control input-lg"
+                                type="text"
+                                v-model="filterEmail"
+                                placeholder="Filter By Email"
+                            />
+                        </div>
 
-            <td>
-                <input
-                    type="text"
-                    v-model="filterPrice"
-                    placeholder="Filter By Price/Day"
-                />
-            </td>
+                        <div class="col">
+                            <input
+                                class="form-control input-lg"
+                                type="text"
+                                v-model="filterName"
+                                placeholder="Filter By Name"
+                            />
+                        </div>
 
-            <td>
-                <input
-                    type="text"
-                    v-model="filterEmail"
-                    placeholder="Filter By Email"
-                />
-            </td>
-
-            <td>
-                <input
-                    type="text"
-                    v-model="filterName"
-                    placeholder="Filter By Name"
-                />
-            </td>
-
-            <td>
-                <input
-                    type="text"
-                    v-model="filterDays"
-                    placeholder="Filter By Days"
-                />
-            </td>
-
-            <td>
-                <input
-                    type="text"
-                    v-model="filterTotal"
-                    placeholder="Filter By Total Paid"
-                />
-            </td>
-        </tr>
-        <br />
-        <table class="table table-striped">
-            <thead class="thead-dark table-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Brand</th>
-                    <th scope="col">Model</th>
-                    <th scope="col">Price/Day</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Card Name</th>
-                    <th scope="col">Days</th>
-                    <th scope="col">Total Paid</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="invoice in filterInvoices" :key="invoice.index">
-                    <th scope="row">{{ invoice.id }}</th>
-                    <td>{{ invoice.brand }}</td>
-                    <td>{{ invoice.model }}</td>
-                    <td>${{ invoice.priceday }}</td>
-                    <td>{{ invoice.email }}</td>
-                    <td>{{ invoice.cardname }}</td>
-                    <td>{{ invoice.days }}</td>
-                    <td>${{ invoice.total }}</td>
-                </tr>
-            </tbody>
-        </table>
-        <TheFooter class="fixed-bottom"></TheFooter>
-    </section>
+                        <div class="col">
+                            <input
+                                class="form-control input-lg"
+                                type="text"
+                                v-model="filterTotal"
+                                placeholder="Filter By Total Paid"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="p-4">
+                <table class="table table-striped">
+                    <thead class="thead-dark table-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Model</th>
+                            <th scope="col">Price/Day</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Card Name</th>
+                            <th scope="col">Days</th>
+                            <th scope="col">Total Paid</th>
+                            <th scope="col">Created at</th>
+                            <th scope="col">Full invoice</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            v-for="invoice in filterInvoices"
+                            :key="invoice.index"
+                        >
+                            <th scope="row">{{ invoice.id }}</th>
+                            <td>{{ invoice.brand }}</td>
+                            <td>{{ invoice.model }}</td>
+                            <td>${{ invoice.priceday }}</td>
+                            <td>{{ invoice.email }}</td>
+                            <td>{{ invoice.cardname }}</td>
+                            <td>{{ invoice.days }}</td>
+                            <td>${{ invoice.total }}</td>
+                            <td>{{ invoice.created_at }}</td>
+                            <td>
+                                <button class="btn btn-outline-dark btn-s">
+                                    <router-link
+                                        class="text-muted"
+                                        :to="{
+                                            name: 'invoicedetails',
+                                            params: { id: invoice.id },
+                                        }"
+                                    >
+                                        Full Invoice
+                                    </router-link>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <TheFooter class="fixed-bottom"></TheFooter>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -164,4 +187,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.button {
+    text-decoration: none;
+}
+</style>

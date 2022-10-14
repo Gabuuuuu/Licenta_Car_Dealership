@@ -81,7 +81,7 @@ class CarController extends Controller
     }
 
     // delete a Car
-    public function delete($id)
+    public function destroy($id)
     {
         $car = Car::find($id);
         $car->delete();

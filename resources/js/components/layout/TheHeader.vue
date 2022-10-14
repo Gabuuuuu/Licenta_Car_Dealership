@@ -1,52 +1,60 @@
 <template>
-    <header id="header" class="d-flex align-items-center">
-        <div
-            class="container d-flex align-items-center justify-content-between"
-        >
-            <h1 class="logo">
-                <router-link to="/home"> CatchA<span>Ride</span> </router-link>
-            </h1>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li>
-                        <router-link class="nav-link" to="/home"
-                            >Home
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link class="nav-link" to="/prices"
-                            >Prices
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link class="nav-link" to="/team"
-                            >Team
-                        </router-link>
-                    </li>
-                    <li v-if="!loggedIn">
-                        <router-link class="nav-link" to="/login"
-                            >Login
-                        </router-link>
-                    </li>
-                    <li v-if="!loggedIn">
-                        <router-link class="nav-link" to="/register"
-                            >Register
-                        </router-link>
-                    </li>
-                    <li v-if="loggedIn">
-                        <router-link to="/adminp" class="nav-link">
-                            Admin Panel
-                        </router-link>
-                    </li>
-                    <li v-if="loggedIn">
-                        <router-link to="/" @click="logOut" class="nav-link">
-                            Logout
-                        </router-link>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <div>
+        <header id="header" class="d-flex align-items-center">
+            <div
+                class="container d-flex align-items-center justify-content-between"
+            >
+                <h1 class="logo">
+                    <router-link to="/home">
+                        CatchA<span>Ride</span>
+                    </router-link>
+                </h1>
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li>
+                            <router-link class="nav-link" to="/home"
+                                >Home
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link class="nav-link" to="/prices"
+                                >Prices
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link class="nav-link" to="/team"
+                                >Team
+                            </router-link>
+                        </li>
+                        <li v-if="!loggedIn">
+                            <router-link class="nav-link" to="/login"
+                                >Login
+                            </router-link>
+                        </li>
+                        <li v-if="!loggedIn">
+                            <router-link class="nav-link" to="/register"
+                                >Register
+                            </router-link>
+                        </li>
+                        <li v-if="loggedIn && !!verifyRole">
+                            <router-link to="/adminp" class="nav-link">
+                                Admin Panel
+                            </router-link>
+                        </li>
+                        <li v-if="loggedIn">
+                            <router-link
+                                to="/"
+                                @click="logOut"
+                                class="nav-link"
+                            >
+                                Logout
+                            </router-link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
 </template>
 
 <script>
@@ -54,15 +62,31 @@ export default {
     data() {
         return {
             loggedIn: !!localStorage.getItem("token"),
+            role: undefined,
         };
     },
-
     methods: {
         logOut() {
             localStorage.removeItem("token");
             localStorage.removeItem("user");
             localStorage.removeItem("id");
+            localStorage.removeItem("role");
             this.loggedIn = false;
+            then(this.loadData());
+        },
+    },
+    computed: {
+        verifyRole() {
+            if (this.loggedIn) {
+                const id = localStorage.getItem("id");
+                axios.get("api/users/getRole/" + id).then(({ data }) => {
+                    this.role = data;
+                });
+                if (this.role == "1") {
+                    return true;
+                }
+                return false;
+            }
         },
     },
 };

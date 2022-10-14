@@ -1,7 +1,9 @@
 <template>
-    <TheHeader class="fixed-top"></TheHeader>
-    <Cars></Cars>
-    <TheFooter></TheFooter>
+    <div>
+        <TheHeader class="fixed-top"></TheHeader>
+        <Cars></Cars>
+        <TheFooter></TheFooter>
+    </div>
 </template>
 
 <script>

@@ -1,194 +1,215 @@
 <template>
-    <section>
-        <TheHeader></TheHeader>
+    <div>
+        <section>
+            <TheHeader></TheHeader>
 
-        <form
-            @submit.prevent="
-                rentnow(car.brand, car.model, car.price, form.total, form.days)
-            "
-        >
-            <div class="container d-lg-flex">
-                <div class="box-1 bg-light user">
-                    <div class="box-inner-1 pb-3 mb-3">
-                        <div
-                            class="d-flex justify-content-between mb-3 userdetails"
-                        >
-                            <p class="fw-bold">
-                                {{ car.brand }} {{ car.model }}
-                            </p>
-                        </div>
-                        <div>
-                            <div>
-                                <img
-                                    :src="'/images/cars/' + car.image"
-                                    alt="Error"
-                                    class="border rounded border-4 rounded-3"
-                                />
+            <form
+                @submit.prevent="
+                    rentnow(
+                        car.brand,
+                        car.model,
+                        car.price,
+                        form.total,
+                        form.days
+                    )
+                "
+            >
+                <div class="container d-lg-flex">
+                    <div class="box-1 bg-light user">
+                        <div class="box-inner-1 pb-3 mb-3">
+                            <div
+                                class="d-flex justify-content-between mb-3 userdetails"
+                            >
+                                <p class="fw-bold">
+                                    {{ car.brand }} {{ car.model }}
+                                </p>
                             </div>
-                        </div>
-                        <p
-                            class="dis info my-5 fw-bold mb-4"
-                            style="font-size: 20px"
-                        >
-                            {{ car.description }}
-                        </p>
-                        <br />
-                        <div>
-                            <h5 class="fw-bold mb-4">
-                                Built in: {{ car.year }}
-                            </h5>
+                            <div>
+                                <div>
+                                    <img
+                                        :src="'/images/cars/' + car.image"
+                                        alt="Error"
+                                        class="border rounded border-4 rounded-3"
+                                    />
+                                </div>
+                            </div>
+                            <p
+                                class="dis info my-5 fw-bold mb-4"
+                                style="font-size: 20px"
+                            >
+                                {{ car.description }}
+                            </p>
                             <br />
-                            <h5 class="fw-bold mb-4">
-                                Fuel Type: {{ car.fuel }}
-                            </h5>
-                            <br />
-                            <h5 class="fw-bold mb-4">
-                                Consumption: {{ car.consumption }}
-                            </h5>
-                            <br />
-                            <h5 class="fw-bold mb-4">
-                                Number of Seats: {{ car.seats }}
-                            </h5>
-                            <br />
-                            <h5 class="fw-bold mb-4">
-                                Car Type: {{ car.body }}
-                            </h5>
-                            <br />
-                            <h5 class="fw-bold mb-4">
-                                Transmission type: {{ car.transmission }}
-                            </h5>
-                            <br />
-                            <h5 class="fw-bold mb-4">
-                                Price/Day: {{ car.price }}
-                            </h5>
-                            <br />
+                            <div>
+                                <h5 class="fw-bold mb-4">
+                                    Built in: {{ car.year }}
+                                </h5>
+                                <br />
+                                <h5 class="fw-bold mb-4">
+                                    Fuel Type: {{ car.fuel }}
+                                </h5>
+                                <br />
+                                <h5 class="fw-bold mb-4">
+                                    Consumption: {{ car.consumption }}
+                                </h5>
+                                <br />
+                                <h5 class="fw-bold mb-4">
+                                    Number of Seats: {{ car.seats }}
+                                </h5>
+                                <br />
+                                <h5 class="fw-bold mb-4">
+                                    Car Type: {{ car.body }}
+                                </h5>
+                                <br />
+                                <h5 class="fw-bold mb-4">
+                                    Transmission type: {{ car.transmission }}
+                                </h5>
+                                <br />
+                                <h5 class="fw-bold mb-4">
+                                    Price/Day: {{ car.price }}
+                                </h5>
+                                <br />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="box-2">
-                    <div class="box-inner-2">
-                        <div>
-                            <p class="fw-bold">Payment Details</p>
-                            <p class="dis mb-3">
-                                Complete your purchase by providing your payment
-                                details
-                            </p>
-                        </div>
-
-                        <div class="mb-3">
-                            <p class="dis fw-bold mb-2">Email address</p>
-                            <input
-                                v-model="form.email"
-                                class="form-control"
-                                type="email"
-                                placeholder="Email"
-                            />
-                        </div>
-                        <div>
-                            <p class="dis fw-bold mb-2">Card details</p>
-                            <div
-                                class="d-flex align-items-center justify-content-between card-atm border rounded"
-                            >
-                                <div class="fab fa-cc-visa ps-3"></div>
-                                <input
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Card Details"
-                                />
-                                <div class="d-flex w-50">
-                                    <input
-                                        type="text"
-                                        class="form-control px-0"
-                                        placeholder="MM/YY"
-                                    />
-                                    <input
-                                        type="text"
-                                        maxlength="3"
-                                        class="form-control px-0"
-                                        placeholder="CVV"
-                                    />
-                                </div>
-                            </div>
-                            <div class="my-3 cardname">
-                                <p class="dis fw-bold mb-2">Cardholder name</p>
-                                <input
-                                    v-model="form.cardname"
-                                    class="form-control"
-                                    type="text"
-                                    placeholder="Your Full Name"
-                                />
-                            </div>
-                            <div class="address">
-                                <p class="dis fw-bold mb-3">Billing address</p>
-                                <select
-                                    class="form-select"
-                                    aria-label="Default select example"
-                                >
-                                    <option selected hidden>Country</option>
-                                    <option>Romania</option>
-                                    <option>USA</option>
-                                    <option>Sweeden</option>
-                                    <option>Finland</option>
-                                    <option>Germany</option>
-                                    <option>Australia</option>
-                                    <option>Bulgaria</option>
-                                    <option disabled>Russia</option>
-                                </select>
-                                <br />
-                                <div class="d-flex">
-                                    <input
-                                        class="form-control zip"
-                                        type="text"
-                                        placeholder="ZIP"
-                                    />
-                                </div>
-                                <br />
-                                <p class="dis fw-bold mb-2">
-                                    How many days do you want to rent the car ?
+                    <div class="box-2">
+                        <div class="box-inner-2">
+                            <div>
+                                <p class="fw-bold">Payment Details</p>
+                                <p class="dis mb-3">
+                                    Complete your purchase by providing your
+                                    payment details
                                 </p>
-                                <select
-                                    v-model="form.days"
-                                    class="form-select"
-                                    aria-label="Default select example"
-                                    @change="total(car.price, form.days)"
-                                >
-                                    <option selected hidden>Days</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>7</option>
-                                    <option>30</option>
-                                </select>
-                                <br />
+                            </div>
 
-                                <div class="d-flex flex-column dis">
-                                    <div
-                                        class="d-flex align-items-center justify-content-between mb-2"
-                                    >
-                                        <p class="fw-bold">Total</p>
+                            <div class="mb-3">
+                                <p class="dis fw-bold mb-2">Email address</p>
+                                <input
+                                    v-model="form.email"
+                                    class="form-control"
+                                    type="email"
+                                    placeholder="Email"
+                                />
+                            </div>
+                            <div>
+                                <p class="dis fw-bold mb-2">Card details</p>
+                                <div
+                                    class="d-flex align-items-center justify-content-between card-atm border rounded"
+                                >
+                                    <div class="fab fa-cc-visa ps-3"></div>
+                                    <input
+                                        maxlength="16"
+                                        v-model="form.carddetails"
+                                        type="text"
+                                        class="form-control"
+                                        placeholder="Card Details"
+                                    />
+                                    <div class="d-flex w-50">
                                         <input
-                                            v-model="form.total"
-                                            readonly
-                                            disabled
-                                            class="fw-bold"
+                                            maxlength="5"
+                                            v-model="form.carddate"
+                                            type="text"
+                                            class="form-control px-0"
+                                            placeholder="MM/YY"
+                                        />
+                                        <input
+                                            v-model="form.cardccv"
+                                            type="text"
+                                            maxlength="3"
+                                            class="form-control px-0"
+                                            placeholder="CVV"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="my-3 cardname">
+                                    <p class="dis fw-bold mb-2">
+                                        Cardholder name
+                                    </p>
+                                    <input
+                                        maxlength="50"
+                                        v-model="form.cardname"
+                                        class="form-control"
+                                        type="text"
+                                        placeholder="Your Full Name"
+                                    />
+                                </div>
+                                <div class="address">
+                                    <p class="dis fw-bold mb-3">
+                                        Billing address
+                                    </p>
+                                    <select
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                    >
+                                        <option selected hidden>Country</option>
+                                        <option>Romania</option>
+                                        <option>USA</option>
+                                        <option>Sweeden</option>
+                                        <option>Finland</option>
+                                        <option>Germany</option>
+                                        <option>Australia</option>
+                                        <option>Bulgaria</option>
+                                        <option disabled>Russia</option>
+                                    </select>
+                                    <br />
+                                    <div class="d-flex">
+                                        <input
+                                            maxlength="6"
+                                            v-model="form.zip"
+                                            class="form-control zip"
+                                            type="text"
+                                            placeholder="ZIP"
                                         />
                                     </div>
                                     <br />
-                                    <button
-                                        class="btn btn-primary mt-2"
-                                        type="submit"
+                                    <p class="dis fw-bold mb-2">
+                                        How many days do you want to rent the
+                                        car ?
+                                    </p>
+                                    <select
+                                        v-model="form.days"
+                                        class="form-select"
+                                        aria-label="Default select example"
+                                        @change="total(car.price, form.days)"
                                     >
-                                        Rent
-                                    </button>
+                                        <option selected hidden>Days</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>7</option>
+                                        <option>30</option>
+                                    </select>
+                                    <br />
+
+                                    <div class="d-flex flex-column dis">
+                                        <div
+                                            class="d-flex align-items-center justify-content-between mb-2"
+                                        >
+                                            <p class="fw-bold">Total</p>
+                                            <input
+                                                v-model="form.total"
+                                                readonly
+                                                disabled
+                                                class="fw-bold"
+                                            />
+                                        </div>
+                                        <br />
+                                        <button
+                                            class="btn btn-primary mt-2"
+                                            type="submit"
+                                        >
+                                            Rent
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
-        <TheFooter></TheFooter>
-    </section>
+            </form>
+            <TheFooter></TheFooter>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -201,10 +222,14 @@ export default {
         return {
             car: [],
             form: {
+                cardccv: "",
+                carddate: "",
+                carddetails: "",
                 email: "",
                 cardname: "",
                 days: "",
                 total: "",
+                zip: "",
             },
         };
     },
@@ -224,6 +249,10 @@ export default {
                 brand,
                 model,
                 price,
+                zip: this.form.zip,
+                cardnumbers: this.form.carddetails,
+                month: this.form.carddate,
+                ccv: this.form.cardccv,
                 email: this.form.email,
                 cardname: this.form.cardname,
                 days: this.form.days,
@@ -232,8 +261,14 @@ export default {
 
             axios
                 .post("/api/invoices", payload)
-                // .then(this.$router.push({ path: "/home" }))
+                .then((res) => {
+                    this.responseAfterLogin(res);
+                    this.loadData();
+                })
                 .catch((error) => console.log(error.response.data));
+        },
+        responseAfterLogin(res) {
+            this.$router.push({ path: "/home" });
         },
         total(price, days) {
             this.form.total = price * days;

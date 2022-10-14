@@ -1,7 +1,9 @@
 <template>
-    <TheHeader class="fixed-top"></TheHeader>
-    <TeamSect></TeamSect>
-    <TheFooter class="fixed-bottom"></TheFooter>
+    <div>
+        <TheHeader class="fixed-top"></TheHeader>
+        <TeamSect></TeamSect>
+        <TheFooter class="fixed-bottom"></TheFooter>
+    </div>
 </template>
 
 <script>

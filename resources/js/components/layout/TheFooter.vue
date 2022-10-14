@@ -1,14 +1,17 @@
 <template>
-    <footer id="footer">
-        <div class="container py-4">
-            <div class="copyright">
-                &copy; Copyright
-                <strong><span>Moraru Gabriel Danut</span></strong> && I do not
-                own any of the images, the credits go to their respective owners
+    <div>
+        <footer id="footer">
+            <div class="container py-4">
+                <div class="copyright">
+                    &copy; Copyright
+                    <strong><span>Moraru Gabriel Danut</span></strong> && I do
+                    not own any of the images, the credits go to their
+                    respective owners
+                </div>
+                <div class="credits">Designed by Moraru Gabriel Danut</div>
             </div>
-            <div class="credits">Designed by Moraru Gabriel Danut</div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 </template>
 
 <style scoped>
